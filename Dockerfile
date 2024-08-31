@@ -15,6 +15,7 @@ COPY --from=builder /app /var/www/html
 WORKDIR /var/www/html
 
 RUN composer install -v
+RUN php artisan key:generate
 RUN php artisan config:cache && php artisan config:clear
 RUN php artisan storage:link
 
